@@ -18,13 +18,6 @@ jobs:
         run: |
           cd src
           nix develop --extra-experimental-features "nix-command flakes" '.#' -c "gomod2nix"
-          # Commit changes if there's a diff
-          if [[ -n $(git diff) ]]; then
-            git config --global user.email "107802416+MHNightCat@users.noreply.github.com"
-            git config --global user.name "MHNightCat"
-            git commit -am "chore: update gomod2nix"
-            git push origin HEAD:${{ github.head_ref }}
-          fi
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
