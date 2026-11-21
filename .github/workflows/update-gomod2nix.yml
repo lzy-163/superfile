@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install Nix
         uses: cachix/install-nix-action@v26
         with:
@@ -33,3 +35,4 @@ jobs:
           title: "Update gomod2nix.toml"
           body: "This PR updates the gomod2nix.toml file."
           base: main
+          branch: "update-gomod2nix"
